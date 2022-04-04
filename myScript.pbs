@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=20
+#PBS -l walltime=5:00:00
+#PBS -l pmem=8gb
+#PBS –A open ## Specifies the allocation. Use –A open for open queue
+#PBS -j oe ## Requests that regular output and terminal output go to the same file
+## The following is the body of the script. By default PBS scripts execute in your home directory, not the
+## directory from which they were submitted. The following line places you in the directory from which the job ## was submitted.
+cd /storage/home/mzm6486/work/DS340W
+
+module load python
+pip3 install -U pip setuptools --user
+pip3 install transformers --user
+pip3 install pandas --user
+pip3 install torch --user
+pip3 install tensorflow --user
+
+
+python3 sentanal2.py &> sent_log1.txt
